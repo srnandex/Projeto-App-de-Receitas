@@ -40,4 +40,43 @@ describe('Testa o componente Explore.js', () => {
       const { pathname } = history.location;
       expect(pathname).toBe('/explore/drinks');
     });
+
+  it('Verifica os itens do Footer',
+    () => {
+      renderWithRouter(<Explore />);
+      const THREE = 3;
+      const imgLinks = screen.getAllByRole('img');
+      expect(imgLinks).toHaveLength(THREE);
+    });
+
+  it('Testa o redirecionamento do primeiro link do Footer',
+    () => {
+      const { history } = renderWithRouter(<Explore />);
+      const drinksImg1Link = screen.getByTestId('drinks-bottom-btn');
+      expect(drinksImg1Link).toBeDefined();
+
+      userEvent.click(drinksImg1Link);
+      const { pathname } = history.location;
+      expect(pathname).toBe('/drinks');
+    });
+  it('Testa o redirecionamento do segundo link do Footer',
+    () => {
+      const { history } = renderWithRouter(<Explore />);
+      const exploreImg1Link = screen.getByTestId('explore-bottom-btn');
+      expect(exploreImg1Link).toBeDefined();
+
+      userEvent.click(exploreImg1Link);
+      const { pathname } = history.location;
+      expect(pathname).toBe('/explore');
+    });
+  it('Testa o redirecionamento do terceiro link do Footer',
+    () => {
+      const { history } = renderWithRouter(<Explore />);
+      const foodsImg1Link = screen.getByTestId('food-bottom-btn');
+      expect(foodsImg1Link).toBeDefined();
+
+      userEvent.click(foodsImg1Link);
+      const { pathname } = history.location;
+      expect(pathname).toBe('/foods');
+    });
 });
