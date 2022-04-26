@@ -4,6 +4,7 @@ import RecipesProvider from './context/RecipesProvider';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login';
+import Explore from './pages/Explore';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={ Login } />
+          <Route exact path="/explore" component={ Explore } />
         </Switch>
       </BrowserRouter>
     </RecipesProvider>
