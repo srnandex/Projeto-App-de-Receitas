@@ -6,18 +6,19 @@ import RecipesContext from '../context/RecipesContext';
 
 const Mainpage = () => {
   const { pathname } = useLocation();
-  const { setLocation, recipes } = useContext(RecipesContext);
+  const { setLocation, recipes, filterByCategory } = useContext(RecipesContext);
 
   useEffect(() => {
     setLocation(pathname);
   });
 
+  const filteredRecipes = filterByCategory || recipes;
   return (
     <div>
-      <FiltersWaraper />
+      <FiltersWaraper pathName={ pathname } />
       {
         pathname === '/foods'
-          ? recipes.map(({ strMealThumb, strMeal }, i) => {
+          ? filteredRecipes.map(({ strMealThumb, strMeal }, i) => {
             const CARD_LIMIT = 12;
             if (i < CARD_LIMIT) {
               return (
@@ -32,7 +33,7 @@ const Mainpage = () => {
             }
             return null;
           })
-          : recipes.map(({ strDrinkThumb, strDrink }, i) => {
+          : filteredRecipes.map(({ strDrinkThumb, strDrink }, i) => {
             const CARD_LIMIT = 12;
             if (i < CARD_LIMIT) {
               return (
