@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Recipescard = ({ name, src }) => (
+const Recipescard = ({ name, src, imgId, nameId }) => (
   <div>
-    <img src={ src } alt={ name } />
-    <p>{ name }</p>
+    <img src={ src } alt={ name } data-testid={ imgId } />
+    <p data-testid={ nameId }>{ name }</p>
   </div>
 );
 
