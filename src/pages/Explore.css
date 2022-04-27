@@ -1,0 +1,27 @@
+.explore-main {
+  height: 640px;
+  position: relative;
+  width: 360px;
+}
+
+.explore-button-food {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  height: 82px;
+  left: 15px;
+  position: absolute;
+  top: 81px;
+  width: 327px;
+}
+
+.explore-button-drinks {
+  background: white;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  height: 82px;
+  left: 14px;
+  position: absolute;
+  top: 196px;
+  width: 327px;
+}
