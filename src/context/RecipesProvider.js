@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import RecipesContext from './RecipesContext';
-import fetchFoods from '../services/RecipesApi';
-import fetchDrinks from '../services/DrinksApi';
+import { fetchFoods, apiSearchRecipes } from '../services/RecipesApi';
+import { fetchDrinks, apiSearchDrink } from '../services/DrinksApi';
 
 function RecipesProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
   const [location, setLocation] = useState('');
   const [categories, setCategories] = useState([]);
   const [filterByCategory, setFilterByCategory] = useState('');
+  const [drinkRecipes, setDrinkRecipes] = useState([]);
+  const [foodRecipes, setFoodRecipes] = useState([]);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -24,7 +26,20 @@ function RecipesProvider({ children }) {
     fetchRecipes();
   }, [location]);
 
+  const getDrinks = async (radio, input) => {
+    const drinks = await apiSearchDrink(radio, input);
+    setDrinkRecipes(drinks);
+  };
+  const getFoods = async (radio, input) => {
+    const foods = await apiSearchRecipes(radio, input);
+    setFoodRecipes(foods);
+  };
+
   const contextValue = {
+    getDrinks,
+    getFoods,
+    drinkRecipes,
+    foodRecipes,
     recipes,
     categories,
     filterByCategory,
@@ -32,6 +47,7 @@ function RecipesProvider({ children }) {
     setLocation,
     setFilterByCategory,
   };
+
   return (
     <RecipesContext.Provider value={ contextValue }>
       { children }

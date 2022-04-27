@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import PropTypes from 'prop-types';
 import RecipesContext from '../context/RecipesContext';
-import fetchDrinks from '../services/DrinksApi';
-import fetchFoods from '../services/RecipesApi';
+import { fetchDrinks } from '../services/DrinksApi';
+import { fetchFoods } from '../services/RecipesApi';
 
 const FiltersWaraper = ({ pathName }) => {
   const { categories, setFilterByCategory } = useContext(RecipesContext);

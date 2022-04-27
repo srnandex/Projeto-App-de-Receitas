@@ -9,11 +9,38 @@ const getUrl = (type, category) => {
   }
 };
 
-const fetchDrinks = async (type, category) => {
+export const fetchDrinks = async (type, category) => {
   const URL = getUrl(type, category);
   const response = await fetch(URL);
   const result = await response.json();
   return result.drinks;
 };
 
-export default fetchDrinks;
+const igredienteUrl = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=';
+const nomeUrl = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
+const fisrtLetterUrl = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=';
+
+export const apiSearchDrink = async (radio, input) => {
+  let url = '';
+  switch (radio) {
+  case 'Ingredient':
+    url = igredienteUrl + input;
+    break;
+  case 'Name':
+    url = nomeUrl + input;
+    break;
+  default:
+    url = fisrtLetterUrl + input;
+  }
+  const response = await fetch(url);
+  const { drinks } = await response.json();
+  if (drinks === null) {
+    global.alert('Sorry, we haven\'t found any recipes for these filters.');
+    return [];
+  }
+  const magicNumber = 12;
+  if (drinks.length > magicNumber) {
+    return drinks.slice(0, magicNumber);
+  }
+  return drinks;
+};
