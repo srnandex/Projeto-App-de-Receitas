@@ -28,21 +28,28 @@ const Login = () => {
 
   return (
     <div className="login">
-      <h1>Login</h1>
+      <h1>
+        Receitas Mundi
+      </h1>
       <form>
         <input
+          className="login-data"
           data-testid="email-input"
           type="email"
           name="email"
+          placeholder="Email"
           onChange={ handleChange }
         />
         <input
+          className="login-data"
           data-testid="password-input"
           name="password"
           type="password"
+          placeholder="Senha acima de 6 caracteres"
           onChange={ handleChange }
         />
         <button
+          className="login-button"
           data-testid="login-submit-btn"
           name="button"
           type="button"
