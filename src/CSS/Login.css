@@ -1,34 +1,32 @@
 * {
+  background-color: darksalmon;
   margin: 0;
   padding: 0;
-  background-color: darksalmon;
 }
 
 .login {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding: 15%;
 }
 
 .login-data {
+  align-items: center;
+  background-color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 10%;
   margin-bottom: 10%;
-  background-color: white;
+  margin-top: 10%;
 }
 
 .login-button {
+  align-items: center;
+  background-color: brown;
+  border-radius: 15px;
+  color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  border-radius: 15px;
-  padding-right: 40%;
   padding-left: 40%;
-  background-color: brown;
-  color: white;
+  padding-right: 40%;
 }
-
-/* subindo alteração pois perdi meu commit kkk */
