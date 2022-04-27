@@ -26,6 +26,19 @@ const FiltersWaraper = ({ pathName }) => {
 
   return (
     <div>
+      { categories.length > 0
+          && (
+            <button
+              type="button"
+              data-testid="All-category-filter"
+              onClick={ () => {
+                setFilterByCategory('');
+                setlastFilter('');
+              } }
+            >
+              All
+            </button>)}
+
       { categories.map(({ strCategory }, i) => {
         const FILTER_LIMIT = 5;
         if (i < FILTER_LIMIT) {

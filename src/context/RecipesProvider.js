@@ -23,7 +23,6 @@ function RecipesProvider({ children }) {
 
     fetchRecipes();
   }, [location]);
-  console.log(location);
 
   const contextValue = {
     recipes,
