@@ -6,7 +6,7 @@ import Recipescard from '../components/RecipesCard';
 import RecipesContext from '../context/RecipesContext';
 import style from '../CSS/MainPage.module.css';
 
-const Mainpage = () => {
+function Mainpage() {
   const { pathname } = useLocation();
   const { setLocation, recipes, filterByCategory } = useContext(RecipesContext);
 
@@ -71,6 +71,6 @@ const Mainpage = () => {
       }
     </div>
   );
-};
+}
 
 export default Mainpage;

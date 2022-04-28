@@ -11,6 +11,8 @@ function RecipesProvider({ children }) {
   const [filterByCategory, setFilterByCategory] = useState('');
   const [drinkRecipes, setDrinkRecipes] = useState([]);
   const [foodRecipes, setFoodRecipes] = useState([]);
+  const [RecipeId, setRecipeId] = useState('');
+  const [Details, setDetails] = useState({});
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -26,6 +28,22 @@ function RecipesProvider({ children }) {
     fetchRecipes();
   }, [location]);
 
+  useEffect(() => {
+    const getDetails = async () => {
+      if (RecipeId) {
+        let details;
+        if (location.includes('food')) {
+          details = await fetchFoods('id', RecipeId);
+        } else {
+          details = await fetchDrinks('id', RecipeId);
+        }
+        setDetails(details[0]);
+      }
+    };
+
+    getDetails();
+  }, [RecipeId, location]);
+
   const getDrinks = async (radio, input) => {
     const drinks = await apiSearchDrink(radio, input);
     setDrinkRecipes(drinks);
@@ -36,16 +54,18 @@ function RecipesProvider({ children }) {
   };
 
   const contextValue = {
-    getDrinks,
-    getFoods,
     drinkRecipes,
     foodRecipes,
     recipes,
     categories,
     filterByCategory,
+    Details,
+    getDrinks,
+    getFoods,
     setRecipes,
     setLocation,
     setFilterByCategory,
+    setRecipeId,
   };
 
   return (

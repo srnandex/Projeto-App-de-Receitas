@@ -4,6 +4,8 @@ const getUrl = (type, category) => {
     return 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
   case 'filter':
     return `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${category}`;
+  case 'id':
+    return `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${category}`;
   default:
     return 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
   }
