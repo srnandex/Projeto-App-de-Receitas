@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 
 function Video({ url }) {
   const [id, setId] = useState('');
-
   useEffect(() => {
     const getId = () => {
-      const index = url.indexOf('=');
-      const videoId = url.slice(index + 1);
+      if (url) {
+        const index = url.indexOf('=');
+        const videoId = url.slice(index + 1);
 
-      setId(videoId);
+        setId(videoId);
+      }
     };
 
     getId();

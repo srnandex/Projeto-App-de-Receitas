@@ -13,6 +13,7 @@ function RecipesProvider({ children }) {
   const [foodRecipes, setFoodRecipes] = useState([]);
   const [RecipeId, setRecipeId] = useState('');
   const [Details, setDetails] = useState({});
+  const [Recomendation, setRecomendation] = useState([]);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -34,8 +35,10 @@ function RecipesProvider({ children }) {
         let details;
         if (location.includes('food')) {
           details = await fetchFoods('id', RecipeId);
+          setRecomendation(await fetchDrinks());
         } else {
           details = await fetchDrinks('id', RecipeId);
+          setRecomendation(await fetchFoods());
         }
         setDetails(details[0]);
       }
@@ -60,6 +63,7 @@ function RecipesProvider({ children }) {
     categories,
     filterByCategory,
     Details,
+    Recomendation,
     getDrinks,
     getFoods,
     setRecipes,
