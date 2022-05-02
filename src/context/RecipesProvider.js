@@ -14,6 +14,8 @@ function RecipesProvider({ children }) {
   const [RecipeId, setRecipeId] = useState('');
   const [Details, setDetails] = useState({});
   const [Recomendation, setRecomendation] = useState([]);
+  const [isDone, setIsDone] = useState(false);
+  const [inProgress, setInProgress] = useState(false);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -56,6 +58,26 @@ function RecipesProvider({ children }) {
     setFoodRecipes(foods);
   };
 
+  const checkStorage = (id) => {
+    const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
+    const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes')) || [];
+    if (doneRecipes.some(({ id: doneId }) => doneId === id)) {
+      setIsDone(true);
+    } else {
+      setIsDone(false);
+    }
+    const cocktails = inProgressRecipes.cocktails ? Object
+      .keys(inProgressRecipes.cocktails).includes(id) : false;
+    const meals = inProgressRecipes.meals ? Object
+      .keys(inProgressRecipes.meals).includes(id) : false;
+
+    if (cocktails || meals) {
+      setInProgress(true);
+    } else {
+      setInProgress(false);
+    }
+  };
+
   const contextValue = {
     drinkRecipes,
     foodRecipes,
@@ -64,12 +86,15 @@ function RecipesProvider({ children }) {
     filterByCategory,
     Details,
     Recomendation,
+    isDone,
+    inProgress,
     getDrinks,
     getFoods,
     setRecipes,
     setLocation,
     setFilterByCategory,
     setRecipeId,
+    checkStorage,
   };
 
   return (

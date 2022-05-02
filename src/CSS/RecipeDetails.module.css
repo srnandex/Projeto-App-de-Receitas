@@ -1,0 +1,42 @@
+.details_page {
+  min-height: 100vh;
+  position: relative;
+}
+
+.video {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.recipe_img {
+  height: 300px;
+  width: 100vw;
+}
+
+.card_container {
+  display: flex;
+  margin-bottom: 50px;
+  overflow-x: scroll;
+  padding-left: 4px;
+  width: 100vw;
+}
+
+.start_container {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  position: fixed;
+  top: 91vh;
+  width: 100%;
+}
+
+.start_btn {
+  background-color: #6ce34f;
+  border: none;
+  border-radius: 5px;
+  font-weight: 700;
+  padding: 8px 16px;
+}

@@ -7,7 +7,7 @@ import style from '../CSS/CardsContainer.module.css';
 export default function CardsContainer({ rote, recipes, limit, testId }) {
   if (rote === '/foods' || rote.includes('drinks/')) {
     return (
-      <div className={ style.card_container }>
+      <>
         {recipes.map(({ strMealThumb, strMeal, idMeal }, i) => {
           if (!strMealThumb && !idMeal) return null;
           if (i < limit) {
@@ -23,17 +23,16 @@ export default function CardsContainer({ rote, recipes, limit, testId }) {
                   cardId={ `${i}${testId}` }
                   imgId={ `${i}-card-img` }
                   nameId={ `${i}-card-name` }
-                  className={ style.card }
                 />
               </Link>);
           }
           return null;
         })}
-      </div>);
+      </>);
   }
   if (rote === '/drinks' || rote.includes('foods/')) {
     return (
-      <div className={ style.card_container }>
+      <>
         {recipes.map(({ strDrinkThumb, strDrink, idDrink }, i) => {
           if (i < parseFloat(limit)) {
             return (
@@ -53,7 +52,7 @@ export default function CardsContainer({ rote, recipes, limit, testId }) {
           }
           return null;
         })}
-      </div>);
+      </>);
   }
 }
 CardsContainer.propTypes = {

@@ -4,15 +4,25 @@ import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import CardsContainer from '../components/CardsContainer';
 import Video from '../components/Video';
 import RecipesContext from '../context/RecipesContext';
+import style from '../CSS/RecipeDetails.module.css';
 
 function Recipedetails() {
   const { pathname } = useLocation();
-  const { setLocation, setRecipeId, Details, Recomendation } = useContext(RecipesContext);
+  const {
+    setLocation,
+    setRecipeId,
+    Details,
+    Recomendation,
+    isDone,
+    inProgress,
+    checkStorage,
+  } = useContext(RecipesContext);
   const { id } = useParams();
 
   useEffect(() => {
     setLocation(pathname);
     setRecipeId(id);
+    checkStorage(id);
   }, [pathname]);
 
   const getIngredients = (str) => {
@@ -44,7 +54,7 @@ function Recipedetails() {
     'strInstructions',
   ];
 
-  const renderFood = () => {
+  const renderDetails = () => {
     const tags = pathname.includes('foods') ? mealTags : drinkTags;
     return (
       <div>
@@ -52,6 +62,7 @@ function Recipedetails() {
           src={ Details[tags[0]] }
           alt={ Details[tags[1]] }
           data-testid="recipe-photo"
+          className={ style.recipe_img }
         />
         <h1 data-testid="recipe-title">{Details[tags[1]]}</h1>
         <p data-testid="recipe-category">{Details[tags[2]]}</p>
@@ -74,21 +85,36 @@ function Recipedetails() {
         {tags[4] && (
           <>
             <h2>Video</h2>
-            <Video url={ Details[tags[4]] } />
+            <div className={ style.video }>
+              <Video url={ Details[tags[4]] } />
+            </div>
           </>
         )}
         <h2>Recommended</h2>
-        <CardsContainer
-          rote={ pathname }
-          limit="6"
-          recipes={ Recomendation }
-          testId="-recomendation-card"
-        />
+        <div className={ style.card_container }>
+          <CardsContainer
+            rote={ pathname }
+            limit="6"
+            recipes={ Recomendation }
+            testId="-recomendation-card"
+          />
+        </div>
       </div>
     );
   };
 
-  return Details && renderFood();
+  return (
+    <div className={ style.details_page }>
+      {Details && renderDetails()}
+      {!isDone && (
+        <div className={ style.start_container }>
+          <button type="button" className={ style.start_btn }>
+            {inProgress ? 'Continue Recipe' : 'Start Recipe'}
+          </button>
+        </div>
+      )}
+    </div>
+  );
 }
 
 export default Recipedetails;

@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import CardsContainer from '../components/CardsContainer';
 import FiltersWaraper from '../components/FiltersWaraper';
 import RecipesContext from '../context/RecipesContext';
+import style from '../CSS/MainPage.module.css';
 
 function Mainpage() {
   const { pathname } = useLocation();
@@ -17,19 +18,23 @@ function Mainpage() {
     <div>
       <FiltersWaraper pathName={ pathname } />
       {pathname === '/foods' ? (
-        <CardsContainer
-          recipes={ filteredRecipes }
-          rote={ pathname }
-          limit="12"
-          testId="-recipe-card"
-        />
+        <div className={ style.card_container }>
+          <CardsContainer
+            recipes={ filteredRecipes }
+            rote={ pathname }
+            limit="12"
+            testId="-recipe-card"
+          />
+        </div>
       ) : (
-        <CardsContainer
-          recipes={ filteredRecipes }
-          rote={ pathname }
-          limit="12"
-          testId="-recipe-card"
-        />
+        <div className={ style.card_container }>
+          <CardsContainer
+            recipes={ filteredRecipes }
+            rote={ pathname }
+            limit="12"
+            testId="-recipe-card"
+          />
+        </div>
       )}
     </div>
   );
