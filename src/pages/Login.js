@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { validationEmail, validationPassword } from '../helpers/validationLogin';
 import '../CSS/Login.css';
+import Logo from '../components/imgs/logo.png';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -29,9 +30,10 @@ const Login = () => {
 
   return (
     <div className="login">
-      <h1>
-        Receitas Mundi
-      </h1>
+      <div>
+        <img className="img-logo" src={ Logo } alt="logo-receitas-mundi" />
+      </div>
+
       <form>
         <input
           className="login-data"
