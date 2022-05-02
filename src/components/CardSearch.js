@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 
 function CardSearch() {
@@ -6,24 +7,28 @@ function CardSearch() {
   return (
     <section>
       {foodRecipes.map((even, index) => (
-        <div id={ even.idMeal } data-testid={ `${index}-recipe-card` } key={ index }>
-          <img
-            data-testid={ `${index}-card-img` }
-            src={ even.strMealThumb }
-            alt={ even.strMeal }
-          />
-          <h3 data-testid={ `${index}-card-name` }>{ even.strMeal }</h3>
-        </div>
+        <Link key={ index } to={ `/foods/${idMeal}` }>
+          <div data-testid={ `${index}-recipe-card` }>
+            <img
+              data-testid={ `${index}-card-img` }
+              src={ even.strMealThumb }
+              alt={ even.strMeal }
+            />
+            <h3 data-testid={ `${index}-card-name` }>{ even.strMeal }</h3>
+          </div>
+        </Link>
       ))}
       {drinkRecipes.map((even, index) => (
-        <div id={ even.idDrink } data-testid={ `${index}-recipe-card` } key={ index }>
-          <img
-            data-testid={ `${index}-card-img` }
-            src={ even.strDrinkThumb }
-            alt={ even.strDrink }
-          />
-          <h3 data-testid={ `${index}-card-name` }>{ even.strDrink }</h3>
-        </div>
+        <Link key={ index } to={ `/drinks/${idDrink}` }>
+          <div data-testid={ `${index}-recipe-card` }>
+            <img
+              data-testid={ `${index}-card-img` }
+              src={ even.strDrinkThumb }
+              alt={ even.strDrink }
+            />
+            <h3 data-testid={ `${index}-card-name` }>{ even.strDrink }</h3>
+          </div>
+        </Link>
       ))}
     </section>
   );

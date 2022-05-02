@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.done-recipes {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-Done-Recipes {
+  align-items: center;
+  border: 2px solid black;
+  border-radius: 6px;
+  display: flex;
+  height: 143px;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding-left: 10px;
+  width: 90%;
+}
+
+.img-card-done {
+  height: 100%;
+}
+
+.img-card-done-link {
+  height: 90%;
+}
+
+.details-done-recipes {
+  height: 90%;
+  width: 50%;
+}
+
+.share-btn {
+  border: none;
+  cursor: pointer;
+  float: right;
+  margin-right: 15px;
+}
