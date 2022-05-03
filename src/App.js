@@ -2,13 +2,14 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import RecipesProvider from './context/RecipesProvider';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './pages/Login';
 import Mainpage from './pages/MainPage';
 import RecipeDetails from './pages/RecipeDetails';
 import Explore from './pages/Explore';
 import ExploreFoods from './pages/ExploreFoods';
 import ExploreDrinks from './pages/ExploreDrinks';
+import DoneRecipes from './pages/DoneRecipes';
+import Profile from './pages/Profile';
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
         <Route exact path="/explore" component={ Explore } />
         <Route exact path="/explore/foods" component={ ExploreFoods } />
         <Route exact path="/explore/drinks" component={ ExploreDrinks } />
+        <Route exact path="/done-recipes" component={ DoneRecipes } />
+        <Route exact path="/profile" component={ Profile } />
       </Switch>
     </RecipesProvider>
   );

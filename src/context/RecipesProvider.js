@@ -11,6 +11,7 @@ function RecipesProvider({ children }) {
   const [filterByCategory, setFilterByCategory] = useState('');
   const [drinkRecipes, setDrinkRecipes] = useState([]);
   const [foodRecipes, setFoodRecipes] = useState([]);
+  const [ingredientsList, setIngredientsList] = useState([]);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -35,11 +36,18 @@ function RecipesProvider({ children }) {
     setFoodRecipes(foods);
   };
 
+  const getIngredients = async (radio, input) => {
+    const ingredients = await apiSearchRecipes(radio, input);
+    setIngredientsList(ingredients);
+  };
+
   const contextValue = {
     getDrinks,
     getFoods,
+    getIngredients,
     drinkRecipes,
     foodRecipes,
+    ingredientsList,
     recipes,
     categories,
     filterByCategory,
