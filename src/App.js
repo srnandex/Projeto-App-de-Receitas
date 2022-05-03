@@ -7,6 +7,7 @@ import Login from './pages/Login';
 import Mainpage from './pages/MainPage';
 import RecipeDetails from './pages/RecipeDetails';
 import Explore from './pages/Explore';
+import InProgress from './pages/InProgress';
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         <Route exact path="/foods/:id" component={ RecipeDetails } />
         <Route exact path="/drinks/:id" component={ RecipeDetails } />
         <Route exact path="/explore" component={ Explore } />
+        <Route exact path="/foods/:id/in-progress" component={ InProgress } />
+        <Route exact path="/drinks/:id/in-progress" component={ InProgress } />
       </Switch>
     </RecipesProvider>
   );

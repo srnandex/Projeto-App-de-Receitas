@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Recipescard from './RecipesCard';
 import style from '../CSS/CardsContainer.module.css';
 
-export default function CardsContainer({ rote, recipes, limit, testId }) {
+export default function CardsContainer({ rote, recipes, limit, testId, nameId }) {
   if (rote === '/foods' || rote.includes('drinks/')) {
     return (
       <>
@@ -22,7 +22,7 @@ export default function CardsContainer({ rote, recipes, limit, testId }) {
                   name={ strMeal }
                   cardId={ `${i}${testId}` }
                   imgId={ `${i}-card-img` }
-                  nameId={ `${i}-card-name` }
+                  nameId={ `${i}${nameId}` }
                 />
               </Link>);
           }
@@ -46,7 +46,7 @@ export default function CardsContainer({ rote, recipes, limit, testId }) {
                   name={ strDrink }
                   cardId={ `${i}${testId}` }
                   imgId={ `${i}-card-img` }
-                  nameId={ `${i}-card-name` }
+                  nameId={ `${i}${nameId}` }
                 />
               </Link>);
           }

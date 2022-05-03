@@ -16,6 +16,7 @@ function RecipesProvider({ children }) {
   const [Recomendation, setRecomendation] = useState([]);
   const [isDone, setIsDone] = useState(false);
   const [inProgress, setInProgress] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -58,6 +59,16 @@ function RecipesProvider({ children }) {
     setFoodRecipes(foods);
   };
 
+  const getFavorite = (id) => {
+    const favorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+
+    if (favorites.some(({ id: favId }) => favId === id)) {
+      setIsFavorite(true);
+    } else {
+      setIsFavorite(false);
+    }
+  };
+
   const checkStorage = (id) => {
     const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
     const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes')) || [];
@@ -76,6 +87,8 @@ function RecipesProvider({ children }) {
     } else {
       setInProgress(false);
     }
+
+    getFavorite(id);
   };
 
   const contextValue = {
@@ -88,6 +101,7 @@ function RecipesProvider({ children }) {
     Recomendation,
     isDone,
     inProgress,
+    isFavorite,
     getDrinks,
     getFoods,
     setRecipes,
@@ -95,6 +109,8 @@ function RecipesProvider({ children }) {
     setFilterByCategory,
     setRecipeId,
     checkStorage,
+    getFavorite,
+    setIsFavorite,
   };
 
   return (

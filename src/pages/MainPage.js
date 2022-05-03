@@ -33,6 +33,7 @@ function Mainpage() {
             rote={ pathname }
             limit="12"
             testId="-recipe-card"
+            nameId="-card-name"
           />
         </div>
       )}
