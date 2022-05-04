@@ -15,6 +15,12 @@ function RecipesProvider({ children }) {
   const [foodRecipes, setFoodRecipes] = useState([]);
   const [ingredientsList, setIngredientsList] = useState([]);
   const [ingredientsImgs, setIngredientsImgs] = useState([]);
+  const [RecipeId, setRecipeId] = useState('');
+  const [Details, setDetails] = useState({});
+  const [Recomendation, setRecomendation] = useState([]);
+  const [isDone, setIsDone] = useState(false);
+  const [inProgress, setInProgress] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -36,6 +42,24 @@ function RecipesProvider({ children }) {
     fetchRecipes();
   }, [location]);
 
+  useEffect(() => {
+    const getDetails = async () => {
+      if (RecipeId) {
+        let details;
+        if (location.includes('food')) {
+          details = await fetchFoods('id', RecipeId);
+          setRecomendation(await fetchDrinks());
+        } else {
+          details = await fetchDrinks('id', RecipeId);
+          setRecomendation(await fetchFoods());
+        }
+        setDetails(details[0]);
+      }
+    };
+
+    getDetails();
+  }, [RecipeId, location]);
+
   const getDrinks = async (radio, input) => {
     const drinks = await apiSearchDrink(radio, input);
     setDrinkRecipes(drinks);
@@ -45,15 +69,39 @@ function RecipesProvider({ children }) {
     setFoodRecipes(foods);
   };
 
-  // const getIngredients = async (radio, input) => {
-  //   const ingredients = await apiSearchRecipes(radio, input);
-  //   setIngredientsList(ingredients);
-  // };
+  const getFavorite = (id) => {
+    const favorites = JSON.parse(localStorage.getItem('favoriteRecipes')) || [];
+
+    if (favorites.some(({ id: favId }) => favId === id)) {
+      setIsFavorite(true);
+    } else {
+      setIsFavorite(false);
+    }
+  };
+
+  const checkStorage = (id) => {
+    const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
+    const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes')) || [];
+    if (doneRecipes.some(({ id: doneId }) => doneId === id)) {
+      setIsDone(true);
+    } else {
+      setIsDone(false);
+    }
+    const cocktails = inProgressRecipes.cocktails ? Object
+      .keys(inProgressRecipes.cocktails).includes(id) : false;
+    const meals = inProgressRecipes.meals ? Object
+      .keys(inProgressRecipes.meals).includes(id) : false;
+
+    if (cocktails || meals) {
+      setInProgress(true);
+    } else {
+      setInProgress(false);
+    }
+
+    getFavorite(id);
+  };
 
   const contextValue = {
-    getDrinks,
-    getFoods,
-    // getIngredients,
     drinkRecipes,
     foodRecipes,
     ingredientsList,
@@ -61,11 +109,22 @@ function RecipesProvider({ children }) {
     recipes,
     categories,
     filterByCategory,
+    Details,
+    Recomendation,
+    isDone,
+    inProgress,
+    isFavorite,
+    getDrinks,
+    getFoods,
     setRecipes,
     setLocation,
     setFilterByCategory,
     setIngredientsList,
     setIngredientsImgs,
+    setRecipeId,
+    checkStorage,
+    getFavorite,
+    setIsFavorite,
   };
 
   return (

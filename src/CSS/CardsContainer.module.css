@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.card {
+  height: 172px;
+  margin: 0 8px;
+  width: 161px;
+}
+
+.card img {
+  height: 109px;
+  width: 161px;
+}
