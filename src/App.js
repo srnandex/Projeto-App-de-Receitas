@@ -13,6 +13,7 @@ import DoneRecipes from './pages/DoneRecipes';
 import Profile from './pages/Profile';
 import Favorites from './pages/Favorites';
 import ExploreIngredients from './pages/ExploreIngredients';
+import ExploreByNatinalities from './pages/ExploreByNationalities';
 
 function App() {
   return (
@@ -36,6 +37,11 @@ function App() {
           exact
           path="/explore/drinks/ingredients"
           component={ ExploreIngredients }
+        />
+        <Route
+          exact
+          path="/explore/foods/nationalities"
+          component={ ExploreByNatinalities }
         />
       </Switch>
     </RecipesProvider>
