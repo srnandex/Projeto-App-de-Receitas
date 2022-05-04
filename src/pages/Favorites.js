@@ -39,7 +39,7 @@ export default function Favorites() {
 
   return (
     <div>
-      <div>
+      <div className={ style.filters }>
         <button
           type="button"
           onClick={ () => setfilter('') }
