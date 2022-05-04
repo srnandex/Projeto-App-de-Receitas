@@ -6,6 +6,7 @@ import IngredientsCard from '../components/IngredientsCard';
 import RecipesContext from '../context/RecipesContext';
 import { fetchFoodsImages, fetchDrinksImages }
 from '../services/IngredientsApi';
+import HeaderWithoutSearch from '../components/HeaderWithoutSearch';
 
 function ExploreIngredients() {
   const { pathname } = useLocation();
@@ -18,6 +19,7 @@ function ExploreIngredients() {
   const newList = ingredientsList;
   return (
     <main>
+      <HeaderWithoutSearch titlePage="Explore Ingredients" />
       {
         pathname === '/explore/foods/ingredients'
           ? (
