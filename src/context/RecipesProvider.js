@@ -21,6 +21,7 @@ function RecipesProvider({ children }) {
   const [isDone, setIsDone] = useState(false);
   const [inProgress, setInProgress] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [useCardSearch, setUseCardSearch] = useState(false);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -125,6 +126,8 @@ function RecipesProvider({ children }) {
     checkStorage,
     getFavorite,
     setIsFavorite,
+    useCardSearch,
+    setUseCardSearch,
   };
 
   return (

@@ -6,14 +6,31 @@ import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipesContext from '../context/RecipesContext';
 import style from '../CSS/MainPage.module.css';
+import CardSearch from '../components/CardSearch';
 
 function Mainpage() {
   const { pathname } = useLocation();
-  const { setLocation, recipes, filterByCategory } = useContext(RecipesContext);
+  const {
+    setLocation,
+    recipes,
+    filterByCategory,
+    drinkRecipes,
+    foodRecipes,
+    setUseCardSearch,
+    useCardSearch } = useContext(RecipesContext);
 
   useEffect(() => {
     setLocation(pathname);
   });
+
+  useEffect(() => {
+    if (foodRecipes.length >= 1 || drinkRecipes.length >= 1) {
+      setUseCardSearch(true);
+    } else {
+      setUseCardSearch(false);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [drinkRecipes, foodRecipes]);
 
   const filteredRecipes = filterByCategory || recipes;
   return (
@@ -22,24 +39,30 @@ function Mainpage() {
       {pathname === '/foods' ? (
         <div className={ style.card_container }>
           <Header titlePage="Foods" />
-          <CardsContainer
-            recipes={ filteredRecipes }
-            rote={ pathname }
-            limit="12"
-            testId="-recipe-card"
-          />
+          {(useCardSearch === true)
+            ? <CardSearch />
+            : (
+              <CardsContainer
+                recipes={ filteredRecipes }
+                rote={ pathname }
+                limit="12"
+                testId="-recipe-card"
+                nameId="-card-name"
+              />)}
           <Footer />
         </div>
       ) : (
         <div className={ style.card_container }>
           <Header titlePage="Drinks" />
-          <CardsContainer
-            recipes={ filteredRecipes }
-            rote={ pathname }
-            limit="12"
-            testId="-recipe-card"
-            nameId="-card-name"
-          />
+          {(useCardSearch) ? <CardSearch />
+            : (
+              <CardsContainer
+                recipes={ filteredRecipes }
+                rote={ pathname }
+                limit="12"
+                testId="-recipe-card"
+                nameId="-card-name"
+              />)}
           <Footer />
         </div>
       )}
