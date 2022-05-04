@@ -1,0 +1,79 @@
+.details_page {
+  min-height: 100vh;
+  position: relative;
+}
+
+.alert {
+  background-color: white;
+  display: flex;
+  height: 150px;
+  left: 15%;
+  padding: 12px 24px;
+  position: fixed;
+  top: 42%;
+  width: 70%;
+}
+
+.alert h3 {
+  background-color: white;
+  font-size: 32px;
+}
+
+.alert button {
+  bottom: 12px;
+  padding: 8px;
+  position: absolute;
+  right: 24px;
+}
+
+.video {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.recipe_img {
+  height: 300px;
+  width: 100%;
+}
+
+.title_container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+}
+
+.title_container button {
+  border: none;
+  margin-left: 5px;
+}
+
+.card_container {
+  display: flex;
+  margin-bottom: 50px;
+  overflow-x: scroll;
+  padding-left: 4px;
+  width: 100%;
+}
+
+.start_container {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  height: 60px;
+  justify-content: center;
+  position: fixed;
+  top: 91vh;
+  width: 100%;
+}
+
+.start_btn {
+  background-color: #6ce34f;
+  border: none;
+  border-radius: 5px;
+  bottom: 0;
+  font-weight: 700;
+  padding: 8px 16px;
+  position: fixed;
+}

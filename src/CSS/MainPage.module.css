@@ -1,20 +1,9 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 .card_container {
   display: flex;
   flex-wrap: wrap;
 }
 
-.card {
-  height: 172px;
-  width: 161px;
-}
-
-.card img {
-  height: 109px;
-  width: 161px;
+.main_page button {
+  margin-bottom: 10px;
+  padding: 8px;
 }

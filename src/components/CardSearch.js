@@ -7,7 +7,7 @@ function CardSearch() {
   return (
     <section>
       {foodRecipes.map((even, index) => (
-        <Link key={ index } to={ `/foods/${idMeal}` }>
+        <Link key={ index } to={ `/foods/${even.idMeal}` }>
           <div data-testid={ `${index}-recipe-card` }>
             <img
               data-testid={ `${index}-card-img` }
@@ -19,7 +19,7 @@ function CardSearch() {
         </Link>
       ))}
       {drinkRecipes.map((even, index) => (
-        <Link key={ index } to={ `/drinks/${idDrink}` }>
+        <Link key={ index } to={ `/drinks/${even.idDrink}` }>
           <div data-testid={ `${index}-recipe-card` }>
             <img
               data-testid={ `${index}-card-img` }
