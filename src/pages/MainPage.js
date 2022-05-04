@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import CardsContainer from '../components/CardsContainer';
 import FiltersWaraper from '../components/FiltersWaraper';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 import RecipesContext from '../context/RecipesContext';
 import style from '../CSS/MainPage.module.css';
 
@@ -20,6 +21,7 @@ function Mainpage() {
       <FiltersWaraper pathName={ pathname } />
       {pathname === '/foods' ? (
         <div className={ style.card_container }>
+          <Header titlePage="Foods" />
           <CardsContainer
             recipes={ filteredRecipes }
             rote={ pathname }
@@ -30,6 +32,7 @@ function Mainpage() {
         </div>
       ) : (
         <div className={ style.card_container }>
+          <Header titlePage="Drinks" />
           <CardsContainer
             recipes={ filteredRecipes }
             rote={ pathname }
