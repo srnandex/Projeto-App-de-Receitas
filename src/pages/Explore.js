@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import HeaderWithoutSearch from '../components/HeaderWithoutSearch';
 import Footer from '../components/Footer';
 import './Explore.css';
 
 function Explore() {
   return (
     <main>
+      <HeaderWithoutSearch titlePage="Explore" />
       <section className="explore-main">
         <Link to="/explore/foods">
           <button

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 // import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import HeaderWithoutSearch from '../components/HeaderWithoutSearch';
 import Footer from '../components/Footer';
 import RecipesContext from '../context/RecipesContext';
 import { fetchFoods } from '../services/RecipesApi';
@@ -45,6 +46,7 @@ function ExploreFoods() {
 
   return (
     <main>
+      <HeaderWithoutSearch titlePage="Explore Foods" />
       <section className="explore-main">
         <Link to="/explore/foods/ingredients">
           <button
