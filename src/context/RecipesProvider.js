@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import RecipesContext from './RecipesContext';
 import { fetchFoods, apiSearchRecipes } from '../services/RecipesApi';
 import { fetchDrinks, apiSearchDrink } from '../services/DrinksApi';
+import { fetchFoodsIngredients, fetchDrinksIngredients }
+from '../services/IngredientsApi';
 
 function RecipesProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
@@ -12,6 +14,7 @@ function RecipesProvider({ children }) {
   const [drinkRecipes, setDrinkRecipes] = useState([]);
   const [foodRecipes, setFoodRecipes] = useState([]);
   const [ingredientsList, setIngredientsList] = useState([]);
+  const [ingredientsImgs, setIngredientsImgs] = useState([]);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -21,6 +24,12 @@ function RecipesProvider({ children }) {
       } else if (location === '/drinks') {
         setRecipes(await fetchDrinks());
         setCategories(await fetchDrinks('category'));
+      }
+      if (location === '/explore/foods/ingredients') {
+        setIngredientsList(await fetchFoodsIngredients());
+      }
+      if (location === '/explore/drinks/ingredients') {
+        setIngredientsList(await fetchDrinksIngredients());
       }
     };
 
@@ -36,24 +45,27 @@ function RecipesProvider({ children }) {
     setFoodRecipes(foods);
   };
 
-  const getIngredients = async (radio, input) => {
-    const ingredients = await apiSearchRecipes(radio, input);
-    setIngredientsList(ingredients);
-  };
+  // const getIngredients = async (radio, input) => {
+  //   const ingredients = await apiSearchRecipes(radio, input);
+  //   setIngredientsList(ingredients);
+  // };
 
   const contextValue = {
     getDrinks,
     getFoods,
-    getIngredients,
+    // getIngredients,
     drinkRecipes,
     foodRecipes,
     ingredientsList,
+    ingredientsImgs,
     recipes,
     categories,
     filterByCategory,
     setRecipes,
     setLocation,
     setFilterByCategory,
+    setIngredientsList,
+    setIngredientsImgs,
   };
 
   return (
