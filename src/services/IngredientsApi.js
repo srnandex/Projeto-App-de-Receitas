@@ -1,12 +1,3 @@
-// const getUrlFoods = (type, name) => {
-//   switch (type) {
-//   case 'image':
-//     return `www.themealdb.com/images/ingredients/${name}-Small.png`;
-//   default:
-//     return 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
-//   }
-// };
-
 export const fetchFoodsIngredients = async () => {
   const URL = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
   const response = await fetch(URL);
@@ -20,15 +11,6 @@ export const fetchFoodsImages = (name) => {
   return src;
 };
 
-// const getUrlDrinks = (type, name) => {
-//   switch (type) {
-//   case 'image':
-//     return `https://www.thecocktaildb.com/images/ingredients/${name}-Small.png`;
-//   default:
-//     return 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
-//   }
-// };
-
 export const fetchDrinksIngredients = async () => {
   const URL = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
   const response = await fetch(URL);
@@ -38,6 +20,6 @@ export const fetchDrinksIngredients = async () => {
 };
 
 export const fetchDrinksImages = (name) => {
-  const URL = `https://www.thecocktaildb.com/images/ingredients/${name}-Small.png`;
-  return URL;
+  const src = `https://www.thecocktaildb.com/images/ingredients/${name}-Small.png`;
+  return src;
 };
