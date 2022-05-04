@@ -17,7 +17,6 @@ function HeaderWithoutSearch({ titlePage }) {
     </header>
   );
 }
-// teste
 
 HeaderWithoutSearch.propTypes = {
   titlePage: PropTypes.string,
