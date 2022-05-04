@@ -25,7 +25,7 @@ function Profile() {
   return (
     <section className="profile-main">
       <HeaderWithoutSearch titlePage="Profile" />
-      <h3 data-testid="profile-email">{ [emailUsuario.email] }</h3>
+      <h3 data-testid="profile-email">{ emailUsuario }</h3>
       <button
         className="btn-profile"
         data-testid="profile-done-btn"

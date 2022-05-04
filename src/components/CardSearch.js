@@ -1,14 +1,16 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
+import '../CSS/CardSearch.css';
 
 function CardSearch() {
   const { foodRecipes, drinkRecipes } = useContext(RecipesContext);
+
   return (
     <section>
       {foodRecipes.map((even, index) => (
         <Link key={ index } to={ `/foods/${even.idMeal}` }>
-          <div data-testid={ `${index}-recipe-card` }>
+          <div className="card-search" data-testid={ `${index}-recipe-card` }>
             <img
               data-testid={ `${index}-card-img` }
               src={ even.strMealThumb }
@@ -20,7 +22,7 @@ function CardSearch() {
       ))}
       {drinkRecipes.map((even, index) => (
         <Link key={ index } to={ `/drinks/${even.idDrink}` }>
-          <div data-testid={ `${index}-recipe-card` }>
+          <div className="card-search" data-testid={ `${index}-recipe-card` }>
             <img
               data-testid={ `${index}-card-img` }
               src={ even.strDrinkThumb }

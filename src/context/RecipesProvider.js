@@ -25,6 +25,7 @@ function RecipesProvider({ children }) {
   const [countries, setCountries] = useState([]);
   const [filterByNationality, setFilterByNationality] = useState('');
   const [randomPage, setRandomPage] = useState('');
+  const [useCardSearch, setUseCardSearch] = useState(false);
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -138,6 +139,8 @@ function RecipesProvider({ children }) {
     setIsFavorite,
     setFilterByNationality,
     setRandomPage,
+    useCardSearch,
+    setUseCardSearch,
   };
 
   return (

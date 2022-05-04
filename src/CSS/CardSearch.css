@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.card-search {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  text-align: center;
+  width: 200px;
+}
+
+.card-search img {
+  margin-bottom: 8px;
+  width: 60%;
+}
