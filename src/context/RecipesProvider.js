@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import RecipesContext from './RecipesContext';
 import { fetchFoods, apiSearchRecipes } from '../services/RecipesApi';
 import { fetchDrinks, apiSearchDrink } from '../services/DrinksApi';
+import { fetchFoodsIngredients, fetchDrinksIngredients }
+from '../services/IngredientsApi';
 
 function RecipesProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
@@ -11,6 +13,8 @@ function RecipesProvider({ children }) {
   const [filterByCategory, setFilterByCategory] = useState('');
   const [drinkRecipes, setDrinkRecipes] = useState([]);
   const [foodRecipes, setFoodRecipes] = useState([]);
+  const [ingredientsList, setIngredientsList] = useState([]);
+  const [ingredientsImgs, setIngredientsImgs] = useState([]);
   const [RecipeId, setRecipeId] = useState('');
   const [Details, setDetails] = useState({});
   const [Recomendation, setRecomendation] = useState([]);
@@ -26,6 +30,12 @@ function RecipesProvider({ children }) {
       } else if (location === '/drinks') {
         setRecipes(await fetchDrinks());
         setCategories(await fetchDrinks('category'));
+      }
+      if (location === '/explore/foods/ingredients') {
+        setIngredientsList(await fetchFoodsIngredients());
+      }
+      if (location === '/explore/drinks/ingredients') {
+        setIngredientsList(await fetchDrinksIngredients());
       }
     };
 
@@ -94,6 +104,8 @@ function RecipesProvider({ children }) {
   const contextValue = {
     drinkRecipes,
     foodRecipes,
+    ingredientsList,
+    ingredientsImgs,
     recipes,
     categories,
     filterByCategory,
@@ -107,6 +119,8 @@ function RecipesProvider({ children }) {
     setRecipes,
     setLocation,
     setFilterByCategory,
+    setIngredientsList,
+    setIngredientsImgs,
     setRecipeId,
     checkStorage,
     getFavorite,
