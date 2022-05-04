@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import CardsContainer from '../components/CardsContainer';
 import FiltersWaraper from '../components/FiltersWaraper';
+import Footer from '../components/Footer';
 import RecipesContext from '../context/RecipesContext';
 import style from '../CSS/MainPage.module.css';
 
@@ -25,6 +26,7 @@ function Mainpage() {
             limit="12"
             testId="-recipe-card"
           />
+          <Footer />
         </div>
       ) : (
         <div className={ style.card_container }>
@@ -35,6 +37,7 @@ function Mainpage() {
             testId="-recipe-card"
             nameId="-card-name"
           />
+          <Footer />
         </div>
       )}
     </div>

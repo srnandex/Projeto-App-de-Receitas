@@ -6,9 +6,12 @@ import Login from './pages/Login';
 import Mainpage from './pages/MainPage';
 import RecipeDetails from './pages/RecipeDetails';
 import Explore from './pages/Explore';
+import ExploreFoods from './pages/ExploreFoods';
+import ExploreDrinks from './pages/ExploreDrinks';
 import InProgress from './pages/InProgress';
 import DoneRecipes from './pages/DoneRecipes';
 import Profile from './pages/Profile';
+import ExploreIngredients from './pages/ExploreIngredients';
 
 function App() {
   return (
@@ -20,10 +23,18 @@ function App() {
         <Route exact path="/foods/:id" component={ RecipeDetails } />
         <Route exact path="/drinks/:id" component={ RecipeDetails } />
         <Route exact path="/explore" component={ Explore } />
+        <Route exact path="/explore/foods" component={ ExploreFoods } />
+        <Route exact path="/explore/drinks" component={ ExploreDrinks } />
         <Route exact path="/foods/:id/in-progress" component={ InProgress } />
         <Route exact path="/drinks/:id/in-progress" component={ InProgress } />
         <Route exact path="/done-recipes" component={ DoneRecipes } />
         <Route exact path="/profile" component={ Profile } />
+        <Route exact path="/explore/foods/ingredients" component={ ExploreIngredients } />
+        <Route
+          exact
+          path="/explore/drinks/ingredients"
+          component={ ExploreIngredients }
+        />
       </Switch>
     </RecipesProvider>
   );
