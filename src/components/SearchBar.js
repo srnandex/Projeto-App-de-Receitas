@@ -35,7 +35,7 @@ function SearchBar() {
   };
 
   return (
-    <nav data-testid="search-top-btn">
+    <nav>
       <input
         data-testid="search-input"
         onChange={ ({ target }) => setSearchInput(target.value) }
