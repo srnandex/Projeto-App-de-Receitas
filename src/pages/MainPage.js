@@ -16,7 +16,7 @@ function Mainpage() {
 
   const filteredRecipes = filterByCategory || recipes;
   return (
-    <div>
+    <div className={ style.main_page }>
       <FiltersWaraper pathName={ pathname } />
       {pathname === '/foods' ? (
         <div className={ style.card_container }>

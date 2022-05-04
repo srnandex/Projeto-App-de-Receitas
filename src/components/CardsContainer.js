@@ -6,6 +6,8 @@ import style from '../CSS/CardsContainer.module.css';
 
 export default function CardsContainer({ rote, recipes, limit, testId, nameId }) {
   if (rote === '/foods' || rote.includes('drinks/')) {
+    const id = rote.includes('drinks/')
+      ? '-recomendation-title' : '-card-name';
     return (
       <>
         {recipes.map(({ strMealThumb, strMeal, idMeal }, i) => {
@@ -22,7 +24,7 @@ export default function CardsContainer({ rote, recipes, limit, testId, nameId })
                   name={ strMeal }
                   cardId={ `${i}${testId}` }
                   imgId={ `${i}-card-img` }
-                  nameId={ `${i}${nameId}` }
+                  nameId={ `${i}${id}` }
                 />
               </Link>);
           }

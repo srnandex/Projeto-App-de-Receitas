@@ -11,6 +11,7 @@ import ExploreDrinks from './pages/ExploreDrinks';
 import InProgress from './pages/InProgress';
 import DoneRecipes from './pages/DoneRecipes';
 import Profile from './pages/Profile';
+import Favorites from './pages/Favorites';
 import ExploreIngredients from './pages/ExploreIngredients';
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route exact path="/drinks/:id/in-progress" component={ InProgress } />
         <Route exact path="/done-recipes" component={ DoneRecipes } />
         <Route exact path="/profile" component={ Profile } />
+        <Route exact path="/favorite-recipes" component={ Favorites } />
         <Route exact path="/explore/foods/ingredients" component={ ExploreIngredients } />
         <Route
           exact
