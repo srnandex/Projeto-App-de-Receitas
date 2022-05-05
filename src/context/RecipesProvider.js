@@ -5,7 +5,7 @@ import { fetchFoods, apiSearchRecipes } from '../services/RecipesApi';
 import { fetchDrinks, apiSearchDrink } from '../services/DrinksApi';
 import { fetchFoodsIngredients, fetchDrinksIngredients }
 from '../services/IngredientsApi';
-import { fetchCountries } from '../services/FoodsNationalitiesApi';
+// import { fetchCountries } from '../services/FoodsNationalitiesApi';
 
 function RecipesProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
@@ -41,10 +41,6 @@ function RecipesProvider({ children }) {
       }
       if (location === '/explore/drinks/ingredients') {
         setIngredientsList(await fetchDrinksIngredients());
-      }
-      if (location === '/explore/foods/nationalities') {
-        setRecipes(await fetchFoods());
-        setCountries(await fetchCountries());
       }
     };
 
@@ -141,6 +137,7 @@ function RecipesProvider({ children }) {
     setRandomPage,
     useCardSearch,
     setUseCardSearch,
+    setCountries,
   };
 
   return (

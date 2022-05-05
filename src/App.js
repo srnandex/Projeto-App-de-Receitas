@@ -14,6 +14,7 @@ import Profile from './pages/Profile';
 import Favorites from './pages/Favorites';
 import ExploreIngredients from './pages/ExploreIngredients';
 import ExploreByNatinalities from './pages/ExploreByNationalities';
+import Notfound from './pages/NotFound';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           path="/explore/foods/nationalities"
           component={ ExploreByNatinalities }
         />
+        <Route exact path="*" component={ Notfound } />
       </Switch>
     </RecipesProvider>
   );
