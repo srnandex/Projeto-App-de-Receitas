@@ -13,18 +13,21 @@ export default function CardsContainer({ rote, recipes, limit, testId, nameId })
         {recipes.map(({ strMealThumb, strMeal, idMeal }, i) => {
           if (!strMealThumb && !idMeal) return null;
           if (i < limit) {
+            let clas = '';
+            if (i > 1 && rote.includes('drinks/')) clas = 'hide';
+
             return (
               <Link
                 to={ `/foods/${idMeal}` }
                 key={ strMeal + i }
-                className={ style.card }
+                className={ `${style.card} ${clas}` }
+                data-testid={ `${i}${testId}` }
               >
                 <Recipescard
                   src={ strMealThumb }
-                  name={ strMeal }
-                  cardId={ `${i}${testId}` }
-                  imgId={ `${i}-card-img` }
                   nameId={ `${i}${id}` }
+                  name={ strMeal }
+                  imgId={ `${i}-card-img` }
                 />
               </Link>);
           }
@@ -37,18 +40,20 @@ export default function CardsContainer({ rote, recipes, limit, testId, nameId })
       <>
         {recipes.map(({ strDrinkThumb, strDrink, idDrink }, i) => {
           if (i < parseFloat(limit)) {
+            let clas = '';
+            if (i > 1 && rote.includes('foods/')) clas = 'hide';
             return (
               <Link
                 to={ `/drinks/${idDrink}` }
                 key={ strDrink }
-                className={ style.card }
+                className={ `${style.card} ${clas}` }
+                data-testid={ `${i}${testId}` }
               >
                 <Recipescard
                   src={ strDrinkThumb }
                   name={ strDrink }
-                  cardId={ `${i}${testId}` }
-                  imgId={ `${i}-card-img` }
                   nameId={ `${i}${nameId}` }
+                  imgId={ `${i}-card-img` }
                 />
               </Link>);
           }
