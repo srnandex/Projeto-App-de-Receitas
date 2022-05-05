@@ -17,7 +17,8 @@ function Mainpage() {
     drinkRecipes,
     foodRecipes,
     setUseCardSearch,
-    useCardSearch } = useContext(RecipesContext);
+    useCardSearch,
+    filterByIngredient } = useContext(RecipesContext);
 
   useEffect(() => {
     setLocation(pathname);
@@ -33,6 +34,8 @@ function Mainpage() {
   }, [drinkRecipes, foodRecipes]);
 
   const filteredRecipes = filterByCategory || recipes;
+  const filteredListByIngredient = filterByIngredient || filteredRecipes;
+
   return (
     <div className={ style.main_page }>
       <FiltersWaraper pathName={ pathname } />
@@ -43,7 +46,7 @@ function Mainpage() {
             ? <CardSearch />
             : (
               <CardsContainer
-                recipes={ filteredRecipes }
+                recipes={ filteredListByIngredient }
                 rote={ pathname }
                 limit="12"
                 testId="-recipe-card"
@@ -57,7 +60,7 @@ function Mainpage() {
           {(useCardSearch) ? <CardSearch />
             : (
               <CardsContainer
-                recipes={ filteredRecipes }
+                recipes={ filteredListByIngredient }
                 rote={ pathname }
                 limit="12"
                 testId="-recipe-card"
