@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
+import RecipesContext from '../context/RecipesContext';
 
 function ExploreFoods() {
+  const { redirectRandomFood } = useContext(RecipesContext);
   return (
     <main>
       <section className="explore-main">
@@ -26,15 +28,14 @@ function ExploreFoods() {
           </button>
         </Link>
 
-        <Link to="/foods/{id-da-receita}">
-          <button
-            className=""
-            type="button"
-            data-testid="explore-surprise"
-          >
-            Surprise me!
-          </button>
-        </Link>
+        <button
+          className=""
+          type="button"
+          data-testid="explore-surprise"
+          onClick={ () => redirectRandomFood() }
+        >
+          Surprise me!
+        </button>
       </section>
       <Footer />
     </main>

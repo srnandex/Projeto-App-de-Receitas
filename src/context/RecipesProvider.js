@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import RecipesContext from './RecipesContext';
 import { fetchFoods, apiSearchRecipes } from '../services/RecipesApi';
 import { fetchDrinks, apiSearchDrink } from '../services/DrinksApi';
 import { fetchFoodsIngredients, fetchDrinksIngredients }
 from '../services/IngredientsApi';
+import { getRandomDrink, getRandomFood } from '../services/RandomRecipes';
 
 function RecipesProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
@@ -22,6 +24,7 @@ function RecipesProvider({ children }) {
   const [inProgress, setInProgress] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
   const [useCardSearch, setUseCardSearch] = useState(false);
+  const history = useHistory();
 
   useEffect(() => {
     const fetchRecipes = async () => {
@@ -102,6 +105,16 @@ function RecipesProvider({ children }) {
     getFavorite(id);
   };
 
+  const redirectRandomFood = async () => {
+    const idRecipeFood = await getRandomFood();
+    history.push(`/foods/${idRecipeFood}`);
+  };
+
+  const redirectRandomDrink = async () => {
+    const iecipeDrink = await getRandomDrink();
+    history.push(`/drinks/${iecipeDrink}`);
+  };
+
   const contextValue = {
     drinkRecipes,
     foodRecipes,
@@ -128,6 +141,8 @@ function RecipesProvider({ children }) {
     setIsFavorite,
     useCardSearch,
     setUseCardSearch,
+    redirectRandomFood,
+    redirectRandomDrink,
   };
 
   return (
