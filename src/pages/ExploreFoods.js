@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 // import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import HeaderWithoutSearch from '../components/HeaderWithoutSearch';
 import Footer from '../components/Footer';
+import RecipesContext from '../context/RecipesContext';
 
 function ExploreFoods() {
+  const { redirectRandomFood } = useContext(RecipesContext);
   return (
     <main>
       <HeaderWithoutSearch titlePage="Explore Foods" />
@@ -33,6 +35,7 @@ function ExploreFoods() {
           className=""
           type="button"
           data-testid="explore-surprise"
+          onClick={ () => redirectRandomFood() }
         >
           Surprise me!
         </button>
