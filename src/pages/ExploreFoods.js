@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import HeaderWithoutSearch from '../components/HeaderWithoutSearch';
 import Footer from '../components/Footer';
 
@@ -28,15 +29,13 @@ function ExploreFoods() {
           </button>
         </Link>
 
-        <Link to="/foods/{id-da-receita}">
-          <button
-            className=""
-            type="button"
-            data-testid="explore-surprise"
-          >
-            Surprise me!
-          </button>
-        </Link>
+        <button
+          className=""
+          type="button"
+          data-testid="explore-surprise"
+        >
+          Surprise me!
+        </button>
       </section>
       <Footer />
     </main>

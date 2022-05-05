@@ -5,6 +5,7 @@ import { fetchFoods, apiSearchRecipes } from '../services/RecipesApi';
 import { fetchDrinks, apiSearchDrink } from '../services/DrinksApi';
 import { fetchFoodsIngredients, fetchDrinksIngredients }
 from '../services/IngredientsApi';
+// import { fetchCountries } from '../services/FoodsNationalitiesApi';
 
 function RecipesProvider({ children }) {
   const [recipes, setRecipes] = useState([]);
@@ -21,6 +22,9 @@ function RecipesProvider({ children }) {
   const [isDone, setIsDone] = useState(false);
   const [inProgress, setInProgress] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [countries, setCountries] = useState([]);
+  const [filterByNationality, setFilterByNationality] = useState('');
+  const [randomPage, setRandomPage] = useState('');
   const [useCardSearch, setUseCardSearch] = useState(false);
 
   useEffect(() => {
@@ -115,6 +119,9 @@ function RecipesProvider({ children }) {
     isDone,
     inProgress,
     isFavorite,
+    countries,
+    filterByNationality,
+    randomPage,
     getDrinks,
     getFoods,
     setRecipes,
@@ -126,8 +133,11 @@ function RecipesProvider({ children }) {
     checkStorage,
     getFavorite,
     setIsFavorite,
+    setFilterByNationality,
+    setRandomPage,
     useCardSearch,
     setUseCardSearch,
+    setCountries,
   };
 
   return (

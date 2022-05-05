@@ -5,7 +5,7 @@ import '../CSS/CardSearch.css';
 
 function CardSearch() {
   const { foodRecipes, drinkRecipes } = useContext(RecipesContext);
-
+  console.log(foodRecipes);
   return (
     <section>
       {foodRecipes.map((even, index) => (
