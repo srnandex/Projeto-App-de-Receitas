@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import HeaderWithoutSearch from '../components/HeaderWithoutSearch';
 import Footer from '../components/Footer';
 import RecipesContext from '../context/RecipesContext';
 
@@ -7,6 +8,7 @@ function ExploreDrinks() {
   const { redirectRandomDrink } = useContext(RecipesContext);
   return (
     <main>
+      <HeaderWithoutSearch titlePage="Explore Drinks" />
       <section className="explore-main">
         <Link to="/explore/drinks/ingredients">
           <button

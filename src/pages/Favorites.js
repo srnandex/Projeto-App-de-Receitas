@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import filledHeart from '../images/blackHeartIcon.svg';
 import share from '../images/shareIcon.svg';
 import style from '../CSS/Favorites.module.css';
+import HeaderWithoutSearch from '../components/HeaderWithoutSearch';
 
 // O botão de filtro All deve ter o atributo data-testid="filter-by-all-btn";
 // O botão de filtro Food deve ter o atributo data-testid="filter-by-food-btn";
@@ -39,6 +40,7 @@ export default function Favorites() {
 
   return (
     <div>
+      <HeaderWithoutSearch titlePage="Favorite Recipes" />
       <div className={ style.filters }>
         <button
           type="button"
