@@ -1,8 +1,8 @@
-.HeaderWithoutSearch{
-    align-items: center; 
-    display: flex;
-    justify-content: space-around;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 20px;
+.HeaderWithoutSearch {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
 }
