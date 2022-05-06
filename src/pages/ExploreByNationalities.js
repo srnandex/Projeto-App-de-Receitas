@@ -16,7 +16,7 @@ function ExploreByNatinalities() {
 
   return (
     <main>
-      <Header />
+      <Header titlePage="Explore Nationalities" />
       <NationalitiesDropdown />
       <CardsFoodNationalities />
       <Footer />

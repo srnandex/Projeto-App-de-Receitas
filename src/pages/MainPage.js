@@ -38,35 +38,43 @@ function Mainpage() {
 
   return (
     <div className={ style.main_page }>
-      <FiltersWaraper pathName={ pathname } />
+
       {pathname === '/foods' ? (
-        <div className={ style.card_container }>
+        <div>
           <Header titlePage="Foods" />
-          {(useCardSearch === true)
-            ? <CardSearch />
-            : (
-              <CardsContainer
-                recipes={ filteredListByIngredient }
-                rote={ pathname }
-                limit="12"
-                testId="-recipe-card"
-                nameId="-card-name"
-              />)}
-          <Footer />
+          <FiltersWaraper pathName={ pathname } />
+          <div className={ style.card_container }>
+
+            {(useCardSearch === true)
+              ? <CardSearch />
+              : (
+                <CardsContainer
+                  recipes={ filteredListByIngredient }
+                  rote={ pathname }
+                  limit="12"
+                  testId="-recipe-card"
+                  nameId="-card-name"
+                />)}
+            <Footer />
+          </div>
         </div>
       ) : (
-        <div className={ style.card_container }>
+        <div>
           <Header titlePage="Drinks" />
-          {(useCardSearch) ? <CardSearch />
-            : (
-              <CardsContainer
-                recipes={ filteredListByIngredient }
-                rote={ pathname }
-                limit="12"
-                testId="-recipe-card"
-                nameId="-card-name"
-              />)}
-          <Footer />
+          <FiltersWaraper pathName={ pathname } />
+          <div className={ style.card_container }>
+
+            {(useCardSearch) ? <CardSearch />
+              : (
+                <CardsContainer
+                  recipes={ filteredListByIngredient }
+                  rote={ pathname }
+                  limit="12"
+                  testId="-recipe-card"
+                  nameId="-card-name"
+                />)}
+            <Footer />
+          </div>
         </div>
       )}
     </div>

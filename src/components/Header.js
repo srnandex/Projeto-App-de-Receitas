@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import SearchBar from './SearchBar';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
+import '../CSS/Header.css';
 
 function Header({ titlePage }) {
   const [isSearchBar, setSearchBar] = useState(false);
@@ -13,7 +14,7 @@ function Header({ titlePage }) {
   };
 
   return (
-    <header>
+    <header className="Header">
       <Link to="/profile">
         <img
           data-testid="profile-top-btn"
@@ -22,7 +23,7 @@ function Header({ titlePage }) {
         />
       </Link>
       <h2 data-testid="page-title">{ titlePage }</h2>
-      <div>
+      <div className="btnHeader">
         <button
           type="button"
           onClick={ handleClick }
