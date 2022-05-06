@@ -20,16 +20,14 @@ function ExploreDrinks() {
           </button>
         </Link>
 
-        <Link to="/drinks/{id-da-receita}">
-          <button
-            className=""
-            type="button"
-            data-testid="explore-surprise"
-            onClick={ () => redirectRandomDrink() }
-          >
-            Surprise me!
-          </button>
-        </Link>
+        <button
+          className=""
+          type="button"
+          data-testid="explore-surprise"
+          onClick={ () => redirectRandomDrink() }
+        >
+          Surprise me!
+        </button>
       </section>
       <Footer />
     </main>
