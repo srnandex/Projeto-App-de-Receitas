@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import '../CSS/DoneRecipes.css';
 import { Link } from 'react-router-dom';
 import shareIcon from '../images/shareIcon.svg';
+import HeaderWithoutSearch from '../components/HeaderWithoutSearch';
 
 const copy = require('clipboard-copy');
 
@@ -11,7 +12,10 @@ function DoneRecipes() {
   const [copiedLink, setCopiedLink] = useState([]);
 
   useEffect(() => {
-    setReceitasProntas(JSON.parse(localStorage.getItem('done-recipes')));
+    const getLocalStorage = JSON.parse(localStorage.getItem('done-recipes'));
+    if (getLocalStorage !== null) {
+      setReceitasProntas(getLocalStorage);
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -32,6 +36,7 @@ function DoneRecipes() {
 
   return (
     <section className="done-recipes">
+      <HeaderWithoutSearch titlePage="Done Recipes" />
       <div>
         <button
           data-testid="filter-by-all-btn"
