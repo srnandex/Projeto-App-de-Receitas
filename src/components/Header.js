@@ -14,29 +14,34 @@ function Header({ titlePage }) {
   };
 
   return (
-    <header className="Header">
-      <Link to="/profile">
-        <img
-          data-testid="profile-top-btn"
-          src={ profileIcon }
-          alt="profile"
-        />
-      </Link>
-      <h2 data-testid="page-title">{ titlePage }</h2>
-      <div className="btnHeader">
-        <button
-          type="button"
-          onClick={ handleClick }
-        >
+    <div>
+      <header className="Header">
+        <Link to="/profile" className="btnProfileIcon">
           <img
-            data-testid="search-top-btn"
-            src={ searchIcon }
-            alt="search"
+            className="btnProfileIcon"
+            data-testid="profile-top-btn"
+            src={ profileIcon }
+            alt="profile"
           />
-        </button>
-        {isSearchBar && <SearchBar />}
-      </div>
-    </header>
+        </Link>
+        <h2 className="tituloHeader" data-testid="page-title">{ titlePage }</h2>
+        <div className="divBtnHeader">
+          <button
+            className="btnSearchHeader"
+            type="button"
+            onClick={ handleClick }
+          >
+            <img
+              className="btnSearchIcon"
+              data-testid="search-top-btn"
+              src={ searchIcon }
+              alt="search"
+            />
+          </button>
+        </div>
+      </header>
+      {isSearchBar && <SearchBar />}
+    </div>
   );
 }
 // teste
