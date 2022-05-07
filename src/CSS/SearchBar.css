@@ -1,9 +1,9 @@
 .btn-searchBar {
   background: brown;
-  border-width: 1px;
   border-radius: 20px;
+  border-width: 1px;
   color: white;
-  font-weight: bold;
+  font-weight: 900;
   margin-left: 15px;
 }
 
