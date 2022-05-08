@@ -7,7 +7,7 @@ import '../CSS/HeaderWithoutSearch.css';
 function HeaderWithoutSearch({ titlePage }) {
   return (
     <header className="HeaderWithoutSearch">
-      <Link to="/profile">
+      <Link to="/profile" className="HeaderWithoutSearch-profile">
         <img
           className="HeaderWithoutSearch-profile"
           data-testid="profile-top-btn"

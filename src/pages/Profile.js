@@ -23,38 +23,40 @@ function Profile() {
   };
 
   return (
-    <section className="profile-main">
+    <div>
       <HeaderWithoutSearch titlePage="Profile" />
-      <h3 data-testid="profile-email">{ emailUsuario }</h3>
-      <button
-        className="btn-profile"
-        data-testid="profile-done-btn"
-        onClick={ () => history.push('/done-recipes') }
-        type="button"
-      >
-        Done Recipes
+      <section className="profile-main">
+        <h3 data-testid="profile-email">{ emailUsuario }</h3>
+        <button
+          className="btn-profile"
+          data-testid="profile-done-btn"
+          onClick={ () => history.push('/done-recipes') }
+          type="button"
+        >
+          Done Recipes
 
-      </button>
-      <button
-        data-testid="profile-favorite-btn"
-        className="btn-profile"
-        onClick={ () => history.push('/favorite-recipes') }
-        type="button"
-      >
-        Favorite Recipes
+        </button>
+        <button
+          data-testid="profile-favorite-btn"
+          className="btn-profile"
+          onClick={ () => history.push('/favorite-recipes') }
+          type="button"
+        >
+          Favorite Recipes
 
-      </button>
-      <button
-        data-testid="profile-logout-btn"
-        className="btn-profile"
-        onClick={ logoutBtn }
-        type="button"
-      >
-        Logout
+        </button>
+        <button
+          data-testid="profile-logout-btn"
+          className="btn-profile"
+          onClick={ logoutBtn }
+          type="button"
+        >
+          Logout
 
-      </button>
-      <Footer />
-    </section>
+        </button>
+        <Footer />
+      </section>
+    </div>
   );
 }
 
