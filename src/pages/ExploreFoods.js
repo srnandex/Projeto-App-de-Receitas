@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import HeaderWithoutSearch from '../components/HeaderWithoutSearch';
 import Footer from '../components/Footer';
 import RecipesContext from '../context/RecipesContext';
+import '../CSS/ExploreFoods.css';
 
 function ExploreFoods() {
   const { redirectRandomFood } = useContext(RecipesContext);

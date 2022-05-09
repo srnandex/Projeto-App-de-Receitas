@@ -1,22 +1,14 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 import IngredientsCard from './IngredientsCard';
-import { fetchDrinksIngredients,
-  fetchDrinksImages, fetchDrinksListByIngredient } from '../services/IngredientsApi';
+import { fetchDrinksImages,
+  fetchDrinksListByIngredient } from '../services/IngredientsApi';
+import '../CSS/ExploreFoodIngredients.css';
 
 function ExploreDrinksIngredients() {
   const { ingredientsList,
     setFilterbyIngredient } = useContext(RecipesContext);
-
-  useEffect(() => {
-    const getIngredients = async () => {
-      const drinkObj = (await fetchDrinksIngredients());
-      const { strIngredient1 } = drinkObj;
-      setFilterbyIngredient(strIngredient1);
-    };
-    getIngredients();
-  });
 
   const fetchIngredientsData = async (ingredient) => {
     const getData = await fetchDrinksListByIngredient(ingredient);
@@ -25,7 +17,7 @@ function ExploreDrinksIngredients() {
   };
 
   return (
-    <section>
+    <section className="container">
       {ingredientsList.map(({ strIngredient1 }, index) => {
         const CARD_LIMIT = 12;
         if (index < CARD_LIMIT) {
