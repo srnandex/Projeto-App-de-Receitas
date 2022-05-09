@@ -38,7 +38,7 @@ function DoneRecipes() {
     <div>
       <HeaderWithoutSearch titlePage="Done Recipes" />
       <section className="done-recipes">
-        <div>
+        <div className="btns-filters">
           <button
             data-testid="filter-by-all-btn"
             type="button"
