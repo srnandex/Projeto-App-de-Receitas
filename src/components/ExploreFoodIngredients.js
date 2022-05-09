@@ -1,23 +1,12 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 import IngredientsCard from './IngredientsCard';
-import { fetchFoodsIngredients,
-  fetchFoodsImages, fetchFoodsListByIngredient } from '../services/IngredientsApi';
+import { fetchFoodsImages, fetchFoodsListByIngredient } from '../services/IngredientsApi';
 
 function ExploreFoodIngredients() {
   const { ingredientsList,
-    // filterByIngredient,
     setFilterbyIngredient } = useContext(RecipesContext);
-
-  useEffect(() => {
-    const getIngredients = async () => {
-      const mealObj = (await fetchFoodsIngredients());
-      const { strIngredient } = mealObj;
-      setFilterbyIngredient(strIngredient);
-    };
-    getIngredients();
-  });
 
   const fetchIngredientsData = async (ingredient) => {
     const getData = await fetchFoodsListByIngredient(ingredient);
