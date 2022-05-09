@@ -4,6 +4,7 @@ import RecipesContext from '../context/RecipesContext';
 import IngredientsCard from './IngredientsCard';
 import { fetchDrinksImages,
   fetchDrinksListByIngredient } from '../services/IngredientsApi';
+import '../CSS/ExploreFoodIngredients.css';
 
 function ExploreDrinksIngredients() {
   const { ingredientsList,
@@ -16,7 +17,7 @@ function ExploreDrinksIngredients() {
   };
 
   return (
-    <section>
+    <section className="container">
       {ingredientsList.map(({ strIngredient1 }, index) => {
         const CARD_LIMIT = 12;
         if (index < CARD_LIMIT) {

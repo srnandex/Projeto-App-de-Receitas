@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 import IngredientsCard from './IngredientsCard';
 import { fetchFoodsImages, fetchFoodsListByIngredient } from '../services/IngredientsApi';
+import '../CSS/ExploreFoodIngredients.css';
 
 function ExploreFoodIngredients() {
   const { ingredientsList,
@@ -15,7 +16,7 @@ function ExploreFoodIngredients() {
   };
 
   return (
-    <section>
+    <section className="container">
       {ingredientsList.map(({ idIngredient, strIngredient }, index) => {
         const CARD_LIMIT = 12;
         if (index < CARD_LIMIT) {
