@@ -5,16 +5,6 @@ import share from '../images/shareIcon.svg';
 import style from '../CSS/Favorites.module.css';
 import HeaderWithoutSearch from '../components/HeaderWithoutSearch';
 
-// O botão de filtro All deve ter o atributo data-testid="filter-by-all-btn";
-// O botão de filtro Food deve ter o atributo data-testid="filter-by-food-btn";
-// O botão de Drinks deve ter o atributo data-testid="filter-by-drink-btn";
-// O imagem do card de receita deve ter o atributo data-testid="${index}-horizontal-image";
-// O texto da categoria da receita deve ter o atributo data-testid="${index}-horizontal-top-text";
-// O texto do nome da receita deve ter o atributo data-testid="${index}-horizontal-name";
-// O texto da data que a receita foi feita deve ter o atributo data-testid="${index}-horizontal-done-date";
-// O elemento de compartilhar a receita deve ter o atributo data-testid="${index}-horizontal-share-btn";
-// As tags da receita devem possuir o atributo data-testid=${index}-${tagName}-horizontal-tag;
-
 export default function Favorites() {
   const [favorites, setFavorites] = useState([]);
   const [copyAlert, setCopyAlert] = useState(false);
