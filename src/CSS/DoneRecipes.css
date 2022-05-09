@@ -41,3 +41,18 @@
   float: right;
   margin-right: 15px;
 }
+
+.btns-filters {
+  display: flex;
+  justify-content: space-around;
+  padding: 8px;
+  width: 100%;
+}
+
+.btns-filters button {
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  width: 70px;
+}
