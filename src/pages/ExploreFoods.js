@@ -14,7 +14,7 @@ function ExploreFoods() {
       <section className="explore-main">
         <Link to="/explore/foods/ingredients">
           <button
-            className=""
+            className="btn-explore-foods"
             type="button"
             data-testid="explore-by-ingredient"
           >
@@ -24,7 +24,7 @@ function ExploreFoods() {
 
         <Link to="/explore/foods/nationalities">
           <button
-            className=""
+            className="btn-explore-foods"
             type="button"
             data-testid="explore-by-nationality"
           >
@@ -33,7 +33,7 @@ function ExploreFoods() {
         </Link>
 
         <button
-          className=""
+          className="btn-explore-foods"
           type="button"
           data-testid="explore-surprise"
           onClick={ () => redirectRandomFood() }
