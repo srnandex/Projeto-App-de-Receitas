@@ -3,9 +3,12 @@ import PropTypes from 'prop-types';
 import RecipesContext from '../context/RecipesContext';
 import { fetchDrinks } from '../services/DrinksApi';
 import { fetchFoods } from '../services/RecipesApi';
+import style from '../CSS/MainPage.module.css';
 
 function FiltersWaraper({ pathName }) {
-  const { categories, setFilterByCategory } = useContext(RecipesContext);
+  const { categories,
+    setFilterByCategory,
+    setUseCardSearch } = useContext(RecipesContext);
   const [lastFilter, setlastFilter] = useState('');
 
   const handleClick = async (name) => {
@@ -18,6 +21,7 @@ function FiltersWaraper({ pathName }) {
       }
       setFilterByCategory(filteredData);
       setlastFilter(name);
+      setUseCardSearch(false);
     } else {
       setFilterByCategory('');
       setlastFilter('');
@@ -25,21 +29,22 @@ function FiltersWaraper({ pathName }) {
   };
 
   return (
-    <div>
-      { categories.length > 0
-          && (
-            <button
-              type="button"
-              data-testid="All-category-filter"
-              onClick={ () => {
-                setFilterByCategory('');
-                setlastFilter('');
-              } }
-            >
-              All
-            </button>)}
+    <div className={ style.buttons_container }>
+      {categories.length > 0 && (
+        <button
+          type="button"
+          data-testid="All-category-filter"
+          onClick={ () => {
+            setFilterByCategory('');
+            setlastFilter('');
+            setUseCardSearch(false);
+          } }
+        >
+          All
+        </button>
+      )}
 
-      { categories.map(({ strCategory }, i) => {
+      {categories.map(({ strCategory }, i) => {
         const FILTER_LIMIT = 5;
         if (i < FILTER_LIMIT) {
           return (
@@ -49,12 +54,12 @@ function FiltersWaraper({ pathName }) {
               key={ strCategory }
               onClick={ () => handleClick(strCategory) }
             >
-              { strCategory }
+              {strCategory}
             </button>
           );
         }
         return null;
-      }) }
+      })}
     </div>
   );
 }
