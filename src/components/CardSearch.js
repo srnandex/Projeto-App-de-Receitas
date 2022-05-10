@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import RecipesContext from '../context/RecipesContext';
 import style from '../CSS/CardsContainer.module.css';
-import checkName from '../helpers/checkName';
 
 function CardSearch() {
   const { foodRecipes, drinkRecipes } = useContext(RecipesContext);
@@ -17,7 +16,7 @@ function CardSearch() {
               src={ even.strMealThumb }
               alt={ even.strMeal }
             />
-            <p data-testid={ `${index}-card-name` }>{ checkName(even.strMeal) }</p>
+            <p data-testid={ `${index}-card-name` }>{ even.strMeal }</p>
           </div>
         </Link>
       ))}
@@ -29,7 +28,7 @@ function CardSearch() {
               src={ even.strDrinkThumb }
               alt={ even.strDrink }
             />
-            <p data-testid={ `${index}-card-name` }>{ checkName(even.strDrink) }</p>
+            <p data-testid={ `${index}-card-name` }>{ even.strDrink }</p>
           </div>
         </Link>
       ))}
