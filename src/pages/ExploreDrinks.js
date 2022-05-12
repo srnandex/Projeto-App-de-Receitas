@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import HeaderWithoutSearch from '../components/HeaderWithoutSearch';
 import Footer from '../components/Footer';
 import RecipesContext from '../context/RecipesContext';
+import '../CSS/ExploreFoods.css';
 
 function ExploreDrinks() {
   const { redirectRandomDrink } = useContext(RecipesContext);
@@ -12,7 +13,7 @@ function ExploreDrinks() {
       <section className="explore-main">
         <Link to="/explore/drinks/ingredients">
           <button
-            className=""
+            className="btn-explore-foods"
             type="button"
             data-testid="explore-by-ingredient"
           >
@@ -21,7 +22,7 @@ function ExploreDrinks() {
         </Link>
 
         <button
-          className=""
+          className="btn-explore-foods"
           type="button"
           data-testid="explore-surprise"
           onClick={ () => redirectRandomDrink() }

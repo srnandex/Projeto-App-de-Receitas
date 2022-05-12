@@ -3,6 +3,7 @@ import RecipesContext from '../context/RecipesContext';
 import { fetchFoods } from '../services/RecipesApi';
 import { fetchCountries,
   fetchFoodsByNatinalities } from '../services/FoodsNationalitiesApi';
+import '../CSS/NationalitiesDropdown.css';
 
 function NationalitiesDropdown() {
   const { setRecipes, setCountries, countries } = useContext(RecipesContext);
@@ -25,8 +26,9 @@ function NationalitiesDropdown() {
   }, [optionSelected, setRecipes]);
 
   return (
-    <nav className="explore-main">
+    <nav className="nav-class">
       <select
+        className="select-box"
         data-testid="explore-by-nationality-dropdown"
         onChange={ (e) => setOptionSelected(e.target.value) }
       >
