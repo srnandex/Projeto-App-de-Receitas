@@ -12,7 +12,7 @@ function DoneRecipes() {
   const [copiedLink, setCopiedLink] = useState([]);
 
   useEffect(() => {
-    const getLocalStorage = JSON.parse(localStorage.getItem('done-recipes'));
+    const getLocalStorage = JSON.parse(localStorage.getItem('doneRecipes'));
     if (getLocalStorage !== null) {
       setReceitasProntas(getLocalStorage);
     }

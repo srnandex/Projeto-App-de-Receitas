@@ -89,8 +89,11 @@ function RecipesProvider({ children }) {
   };
 
   const checkStorage = (id) => {
-    const doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
+    let doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
     const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes')) || [];
+    if (doneRecipes[0] === null) {
+      doneRecipes = [];
+    }
     if (doneRecipes.some(({ id: doneId }) => doneId === id)) {
       setIsDone(true);
     } else {
@@ -118,6 +121,34 @@ function RecipesProvider({ children }) {
   const redirectRandomDrink = async () => {
     const iecipeDrink = await getRandomDrink();
     history.push(`/drinks/${iecipeDrink}`);
+  };
+
+  const saveProgress = (type, ixd, progress) => {
+    const saveProg = {
+      cocktails: {},
+      meals: {},
+    };
+    const progressVeri = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    if (progressVeri === null) {
+      return localStorage.setItem('inProgressRecipes', JSON.stringify(saveProg));
+    }
+    if (type === 'foods') {
+      progressVeri.cocktails[ixd] = progress;
+      return localStorage.setItem('inProgressRecipes', JSON.stringify(progressVeri));
+    }
+    if (type === 'drinks') {
+      progressVeri.meals[ixd] = progress;
+      return localStorage.setItem('inProgressRecipes', JSON.stringify(progressVeri));
+    }
+  };
+
+  const saveDoneRecipes = (objDone) => {
+    const saveDone = [];
+    const done = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (done === null) {
+      return localStorage.setItem('doneRecipes', JSON.stringify(saveDone));
+    }
+    return localStorage.setItem('doneRecipes', JSON.stringify([...done, objDone]));
   };
 
   const contextValue = {
@@ -156,6 +187,8 @@ function RecipesProvider({ children }) {
     redirectRandomDrink,
     setCountries,
     setFilterbyIngredient,
+    saveProgress,
+    saveDoneRecipes,
   };
 
   return (
