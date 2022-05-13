@@ -59,7 +59,6 @@ function InProgress() {
     setLocationRecipe(loc);
     const tagsDon = pathname.includes('foods') ? mealTags : drinkTags;
     setDoneTag(tagsDon);
-    saveDoneRecipes();
     const getProgress = JSON.parse(localStorage.getItem('inProgressRecipes'));
     if (getProgress === null) {
       return setIngredientsProgress([]);
@@ -131,7 +130,7 @@ function InProgress() {
       name: Details[tag[1]],
       image: Details[tag[0]],
       doneDate: dataAtual,
-      tags: (Details[tag[6] !== null]) ? Details[tag[6]].split(',') : [],
+      tags: (Details[tag[6]] !== null) ? Details[tag[6]].split(',') : [],
     };
     saveDoneRecipes(objDone);
     push('/done-recipes');
