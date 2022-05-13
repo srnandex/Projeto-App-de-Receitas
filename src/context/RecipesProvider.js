@@ -88,21 +88,29 @@ function RecipesProvider({ children }) {
     }
   };
 
-  const checkStorage = (id) => {
+  const saveDoneRecipes = (objDone) => {
+    const done = JSON.parse(localStorage.getItem('doneRecipes'));
+    if (done === null) {
+      return localStorage.setItem('doneRecipes', JSON.stringify([objDone]));
+    }
+    return localStorage.setItem('doneRecipes', JSON.stringify([...done, objDone]));
+  };
+
+  const checkStorage = (idx) => {
     let doneRecipes = JSON.parse(localStorage.getItem('doneRecipes')) || [];
     const inProgressRecipes = JSON.parse(localStorage.getItem('inProgressRecipes')) || [];
     if (doneRecipes[0] === null) {
       doneRecipes = [];
     }
-    if (doneRecipes.some(({ id: doneId }) => doneId === id)) {
+    if (doneRecipes.some((i) => i.id === idx)) {
       setIsDone(true);
     } else {
       setIsDone(false);
     }
     const cocktails = inProgressRecipes.cocktails ? Object
-      .keys(inProgressRecipes.cocktails).includes(id) : false;
+      .keys(inProgressRecipes.cocktails).includes(idx) : false;
     const meals = inProgressRecipes.meals ? Object
-      .keys(inProgressRecipes.meals).includes(id) : false;
+      .keys(inProgressRecipes.meals).includes(idx) : false;
 
     if (cocktails || meals) {
       setInProgress(true);
@@ -110,7 +118,7 @@ function RecipesProvider({ children }) {
       setInProgress(false);
     }
 
-    getFavorite(id);
+    getFavorite(idx);
   };
 
   const redirectRandomFood = async () => {
@@ -140,15 +148,6 @@ function RecipesProvider({ children }) {
       progressVeri.meals[ixd] = progress;
       return localStorage.setItem('inProgressRecipes', JSON.stringify(progressVeri));
     }
-  };
-
-  const saveDoneRecipes = (objDone) => {
-    const saveDone = [];
-    const done = JSON.parse(localStorage.getItem('doneRecipes'));
-    if (done === null) {
-      return localStorage.setItem('doneRecipes', JSON.stringify(saveDone));
-    }
-    return localStorage.setItem('doneRecipes', JSON.stringify([...done, objDone]));
   };
 
   const contextValue = {

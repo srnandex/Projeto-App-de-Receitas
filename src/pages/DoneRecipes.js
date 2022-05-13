@@ -80,9 +80,18 @@ function DoneRecipes() {
               />
             </Link>
             <div className="details-done-recipes">
-              {copiedLink.includes(even.id) && <span>Link copied!</span> }
+              <p
+                className="fWhite categoryType"
+                data-testid={ `${index}-horizontal-top-text` }
+              >
+                { (even.type === 'drink')
+                  ? `${even.category}`
+                  : `${even.nationality} - ${even.category}`}
+
+              </p>
               {even.alcoholicOrNot.includes('Alcoholic') && (
                 <p
+                  className="fWhite"
                   data-testid={ `${index}-horizontal-top-text` }
                 >
                   Alcoholic
@@ -90,41 +99,57 @@ function DoneRecipes() {
                 </p>) }
               {even.alcoholicOrNot.includes('non-alcoholic') && (
                 <p
+                  className="fWhite"
                   data-testid={ `${index}-horizontal-top-text` }
                 >
                   Non alcoholic
 
                 </p>) }
-              <p
-                data-testid={ `${index}-horizontal-top-text` }
-              >
-                { `${even.nationality} - ${even.category}` }
-
-              </p>
-              <button
-                type="button"
-                className="share-btn"
-                onClick={ copyBtn }
-              >
-                <img
-                  data-testid={ `${index}-horizontal-share-btn` }
-                  id={ even.id }
-                  src={ shareIcon }
-                  alt="share"
-                />
-              </button>
               <Link
                 to={ (even.type === 'drink')
                   ? `/drinks/${even.id}` : `/foods/${even.id}` }
               >
-                <p data-testid={ `${index}-horizontal-name` }>{ even.name }</p>
+                <p
+                  className="fWhite nameDon"
+                  data-testid={ `${index}-horizontal-name` }
+                >
+                  { even.name }
+
+                </p>
               </Link>
-              <p data-testid={ `${index}-horizontal-done-date` }>{ even.doneDate }</p>
+              <p
+                className="fWhite"
+                data-testid={ `${index}-horizontal-done-date` }
+              >
+                { even.doneDate }
+
+              </p>
               {even.tags.map((ev, id) => (
-                <span data-testid={ `${index}-${ev}-horizontal-tag` } key={ id }>
+                <span
+                  className="fWhite tagsa"
+                  data-testid={ `${index}-${ev}-horizontal-tag` }
+                  key={ id }
+                >
                   { ev }
                 </span>
               ))}
+              <div className="fWhite divShar">
+                <button
+                  type="button"
+                  className="share-btn"
+                  onClick={ copyBtn }
+                >
+                  <img
+                    data-testid={ `${index}-horizontal-share-btn` }
+                    id={ even.id }
+                    src={ shareIcon }
+                    className="fWhite"
+                    alt="share"
+                  />
+                </button>
+                {copiedLink.includes(even.id) && (
+                  <span className="fWhite">Link copied!</span>) }
+              </div>
             </div>
           </div>
         ))}
